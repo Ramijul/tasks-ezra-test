@@ -81,7 +81,7 @@ yarn test
 
 ## Database
 
-The application uses SQLite as the database. The database file (`app.db`) is automatically created when you first run the application.
+The application uses SQLite as the database. The database file (`app.db`) is automatically created when you first run the application, with 10 records seeded.
 
 ## Design choices, trade-offs, and assumptions made
 - Assumed the project to be a To-do list rather than a project management tool.
