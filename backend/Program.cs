@@ -83,11 +83,14 @@ app.MapHealthChecks("/health", new HealthCheckOptions
     }
 });
 
-// Ensure database is created
+// Ensure database is created and seed with initial data
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     context.Database.EnsureCreated();
+    
+    // Seed the database with random tasks
+    await DatabaseSeeder.SeedAsync(context);
 }
 
 try
