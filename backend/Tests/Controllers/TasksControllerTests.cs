@@ -177,7 +177,8 @@ namespace backend.Tests.Controllers
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             // Act
-            var response = await client.PutAsync("/api/tasks/1", content);
+            var request = new HttpRequestMessage(HttpMethod.Patch, "/api/tasks/1") { Content = content };
+            var response = await client.SendAsync(request);
 
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.OK);
@@ -205,7 +206,8 @@ namespace backend.Tests.Controllers
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             // Act
-            var response = await client.PutAsync("/api/tasks/999", content);
+            var request = new HttpRequestMessage(HttpMethod.Patch, "/api/tasks/999") { Content = content };
+            var response = await client.SendAsync(request);
 
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);

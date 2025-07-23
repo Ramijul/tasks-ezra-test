@@ -39,7 +39,7 @@ namespace backend.Modules.Tasks.Controllers
             return CreatedAtAction(nameof(GetTask), new { id = task.Id }, task);
         }
 
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateTask(int id, UpdateTaskDto updateTaskDto)
         {
             var task = await _taskService.UpdateTaskAsync(id, updateTaskDto);
